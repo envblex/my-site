@@ -10,10 +10,43 @@ const tags = collectTags(articles);
 
 <BaseLayout title={SITE.name} description={SITE.description} canonicalPath="/">
   <section class="hero">
-    <p class="eyebrow">Personal blog</p>
-    <h1>{SITE.name}</h1>
-    <p class="intro">{SITE.description}</p>
+    <p class="eyebrow">Personal blog at {SITE.name}</p>
+    <h1>envblex</h1>
+    <p class="intro">I am envblex</p>
     <p><a href="/feed.xml">Subscribe via RSS</a></p>
+  </section>
+
+  <section class="profile-grid" aria-label="Profile">
+    <div>
+      <h2>About</h2>
+      <p>
+        I am a developer, and recently I've been interested in nodejs/go/rust.
+        My interests are as follows:
+      </p>
+      <ul class="interest-list">
+        <li><strong>nodejs:</strong> An easy way to create websites</li>
+        <li><strong>go:</strong> An easy way to create CLIs</li>
+        <li>
+          <strong>rust:</strong> An easy way to create fast and secure code
+          (I'm still learning, so I don't know the details)
+        </li>
+      </ul>
+      <p>
+        I have a strong interest in domains and know about minor TLDs like skin,
+        which is used on this website.
+      </p>
+    </div>
+
+    <div>
+      <h2>Contact</h2>
+      <ul class="contact-list">
+        <li><a href="mailto:envblex@env.skin">envblex@env.skin</a></li>
+        <li><a href="mailto:envblex@proton.me">envblex@proton.me</a></li>
+        <li><a href="https://github.com/envblex">GitHub: envblex</a></li>
+        <li><a href="https://www.youtube.com/@envblex">YouTube: envblex</a></li>
+        <li><a href="https://x.com/envblex">X: envblex</a></li>
+      </ul>
+    </div>
   </section>
 
   <section aria-labelledby="latest-heading">

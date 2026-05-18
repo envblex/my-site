@@ -89,6 +89,33 @@ p {
   font-size: 18px;
 }
 
+.profile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.8fr);
+  gap: 32px;
+  padding: 24px 0 8px;
+  border-top: 1px solid var(--line);
+}
+
+.profile-grid h2 {
+  margin-top: 0;
+}
+
+.interest-list,
+.contact-list {
+  margin: 16px 0 0;
+  padding-left: 20px;
+}
+
+.interest-list li,
+.contact-list li {
+  margin-top: 8px;
+}
+
+.contact-list a {
+  overflow-wrap: anywhere;
+}
+
 .article-list {
   display: grid;
   gap: 16px;
@@ -196,5 +223,10 @@ p {
 
   .hero {
     padding-top: 24px;
+  }
+
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 }

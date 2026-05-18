@@ -17,11 +17,7 @@ These items are intentionally outside `v0.1.0` and must not be implemented unles
 
 ## Open Questions
 
-- What exact self-introduction text should appear on the homepage?
-- Should articles use `.md`, `.mdx`, or both in practice?
-- What icon set should be used if icons are added?
 - Should updated articles be sorted by `publishedAt` or `updatedAt` on the homepage?
-- Should the RSS feed include full article content or descriptions only?
 
 ## Rejected for Now
 

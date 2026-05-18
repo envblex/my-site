@@ -12,7 +12,7 @@ The goal is to keep thoughts, development records, and design notes under the ow
 
 1. Clone the repository.
 2. Install dependencies with `pnpm install`.
-3. Add or edit articles in `src/content/articles`.
+3. Add or edit Markdown or MDX articles in `src/content/articles`.
 4. Run `pnpm lint`, `pnpm typecheck`, and `pnpm build`.
 5. Commit and push changes.
 6. Pull requests run checks only.
@@ -28,7 +28,7 @@ The goal is to keep thoughts, development records, and design notes under the ow
 
 ## Article Format
 
-Articles use frontmatter like this:
+Articles can be written as `.md` or `.mdx` files and use frontmatter like this:
 
 ```markdown
 ---
@@ -52,16 +52,28 @@ Required fields:
 
 Draft articles use `draft: true`. Drafts must not appear in production article pages, homepage listings, RSS, or sitemap output.
 
+Article bodies may reference externally hosted images, videos, and files by URL. Local media asset management is intentionally not part of the first version.
+
 ## Pages
 
 The initial site provides:
 
-- `/`: homepage with site name, short profile, latest articles, tags, and RSS link
+- `/`: homepage with the `envblex` profile, contact links, latest articles, tags, and RSS link
 - `/article/[slug]`: published article pages
 - `/404`: not found page
-- `/feed.xml`: RSS feed
+- `/feed.xml`: RSS feed containing article titles, descriptions, links, and publication dates only
 - `/sitemap.xml`: search engine sitemap
 - `/robots.txt`: crawler rules
+
+The homepage contact section includes:
+
+- `envblex@env.skin`
+- `envblex@proton.me`
+- GitHub: `envblex`
+- YouTube: `envblex`
+- X: `envblex`
+
+If Google Material Icons are used, they should be limited to useful blog preview and navigation affordances such as `open_in_new` and `view_comfy_alt`.
 
 ## Deployment
 
