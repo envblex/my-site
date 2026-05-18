@@ -1,5 +1,8 @@
 name: Check and Deploy
 
+permissions:
+  contents: read
+
 env:
   ASTRO_TELEMETRY_DISABLED: 1
 
