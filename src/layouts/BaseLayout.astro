@@ -1,0 +1,77 @@
+---
+import { SITE } from "@/lib/site";
+import "@/styles/global.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  ogType?: "website" | "article";
+  jsonLd?: Record<string, unknown>;
+};
+
+const {
+  title = SITE.name,
+  description = SITE.description,
+  canonicalPath = "/",
+  ogType = "website",
+  jsonLd
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, SITE.url).toString();
+const pageTitle = title === SITE.name ? SITE.name : `${title} | ${SITE.name}`;
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/feed.xml" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {
+      gaMeasurementId && (
+        <>
+          <script
+            is:inline
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          />
+          <script
+            is:inline
+            set:html={`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementId}');`}
+          />
+        </>
+      )
+    }
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="site-title" href="/">{SITE.name}</a>
+        <nav aria-label="Primary navigation">
+          <a href="/feed.xml">RSS</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

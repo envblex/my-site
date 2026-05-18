@@ -1,0 +1,24 @@
+{
+  "name": "my-blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "lint": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "typecheck": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.0.8",
+    "@astrojs/rss": "^4.0.11",
+    "astro": "^5.1.1",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "wrangler": "^3.99.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

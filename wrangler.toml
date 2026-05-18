@@ -1,0 +1,6 @@
+name = "my-blog"
+compatibility_date = "2026-05-18"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"

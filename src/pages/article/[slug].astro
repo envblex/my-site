@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getArticleUrl, getPublishedArticles, type Article } from "@/lib/articles";
+import { formatDate, toIsoDate } from "@/lib/date";
+import { SITE } from "@/lib/site";
+
+export async function getStaticPaths() {
+  const articles = await getPublishedArticles();
+
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article }
+  }));
+}
+
+type Props = {
+  article: Article;
+};
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+const canonicalPath = getArticleUrl(article.slug);
+const canonicalUrl = new URL(canonicalPath, SITE.url).toString();
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: toIsoDate(article.data.publishedAt),
+  dateModified: toIsoDate(article.data.updatedAt ?? article.data.publishedAt),
+  author: {
+    "@type": "Person",
+    name: SITE.author
+  },
+  publisher: {
+    "@type": "Organization",
+    name: SITE.name
+  },
+  mainEntityOfPage: canonicalUrl,
+  url: canonicalUrl,
+  keywords: article.data.tags
+};
+---
+
+<BaseLayout
+  title={article.data.title}
+  description={article.data.description}
+  canonicalPath={canonicalPath}
+  ogType="article"
+  jsonLd={jsonLd}
+>
+  <article>
+    <header class="article-header">
+      <p class="meta">Published {formatDate(article.data.publishedAt)}</p>
+      <h1>{article.data.title}</h1>
+      {
+        article.data.updatedAt && (
+          <p class="meta">Updated {formatDate(article.data.updatedAt)}</p>
+        )
+      }
+      {
+        article.data.tags.length > 0 && (
+          <ul class="tags" aria-label="Article tags">
+            {article.data.tags.map((tag) => (
+              <li class="tag">{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+    <div class="article-content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

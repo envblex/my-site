@@ -1,0 +1,61 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { collectTags, getArticleUrl, getPublishedArticles } from "@/lib/articles";
+import { formatDate } from "@/lib/date";
+import { SITE } from "@/lib/site";
+
+const articles = await getPublishedArticles();
+const tags = collectTags(articles);
+---
+
+<BaseLayout title={SITE.name} description={SITE.description} canonicalPath="/">
+  <section class="hero">
+    <p class="eyebrow">Personal blog</p>
+    <h1>{SITE.name}</h1>
+    <p class="intro">{SITE.description}</p>
+    <p><a href="/feed.xml">Subscribe via RSS</a></p>
+  </section>
+
+  <section aria-labelledby="latest-heading">
+    <h2 id="latest-heading">Latest Articles</h2>
+    {
+      articles.length > 0 ? (
+        <ul class="article-list">
+          {articles.map((article) => (
+            <li class="article-card">
+              <article>
+                <p class="meta">{formatDate(article.data.publishedAt)}</p>
+                <h3>
+                  <a href={getArticleUrl(article.slug)}>{article.data.title}</a>
+                </h3>
+                <p>{article.data.description}</p>
+                {article.data.tags.length > 0 && (
+                  <ul class="tags" aria-label={`Tags for ${article.data.title}`}>
+                    {article.data.tags.map((tag) => (
+                      <li class="tag">{tag}</li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="empty-state">No published articles yet.</p>
+      )
+    }
+  </section>
+
+  {
+    tags.length > 0 && (
+      <section aria-labelledby="tags-heading">
+        <h2 id="tags-heading">Tags</h2>
+        <ul class="tags">
+          {tags.map((tag) => (
+            <li class="tag">{tag}</li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+</BaseLayout>
