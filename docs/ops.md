@@ -42,7 +42,7 @@ No KV namespaces, R2 buckets, D1 databases, or Durable Objects are needed.
 
 | Domain          | Type   | Proxy | Status      |
 | --------------- | ------ | ----- | ----------- |
-| blog.env.skin   | custom | yes   | configured  |
+| env.skin   | custom | yes   | configured  |
 
 ## Manual setup steps
 
@@ -94,5 +94,5 @@ Alternatively, use `wrangler rollback` manually (requires `CLOUDFLARE_API_TOKEN`
 
 * No staging environment exists — all PR checks run lint/typecheck/build but cannot verify runtime behavior.
 * No D1/KV/R2 resources are used, so no data loss risk on redeploy.
-* The domain `blog.env.skin` is managed in Cloudflare dashboard, not in this repository.
+* The domain `env.skin` is managed in Cloudflare dashboard, not in this repository.
 * The Worker name `my-blog` is hardcoded in `wrangler.toml` — renaming requires manual coordination with the Cloudflare dashboard.
