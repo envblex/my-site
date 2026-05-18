@@ -1,6 +1,6 @@
 # My Blog
 
-A personal blog for `blog.env.skin`.
+A personal blog for `env.skin`.
 
 This project publishes writing from Markdown or MDX files stored in the repository. There is no CMS. Git is the editing and publishing workflow: write locally, commit, push, build, and deploy.
 

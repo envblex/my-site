@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://blog.env.skin/sitemap.xml
+Sitemap: https://env.skin/sitemap.xml

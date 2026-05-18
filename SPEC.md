@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Build a personal blog at `blog.env.skin` where articles are written locally as Markdown and published by pushing to GitHub.
+Build a personal blog at `env.skin` where articles are written locally as Markdown and published by pushing to GitHub.
 
 The project must use Git as the publishing workflow. It must not include a CMS, database, admin panel, authentication, or comment system in the initial version.
 
@@ -16,7 +16,7 @@ The intended publishing flow is:
 2. Write Markdown or MDX articles in `src/content/articles`.
 3. Push to GitHub.
 4. GitHub Actions installs dependencies, checks the project, builds with Astro, and deploys to Cloudflare Workers from `main`.
-5. The site is reflected at `https://blog.env.skin`.
+5. The site is reflected at `https://env.skin`.
 
 ## Current Scope
 
@@ -160,7 +160,7 @@ Draft articles must not appear in the sitemap.
 
 ### Robots `/robots.txt`
 
-The robots file must allow normal crawling and reference the sitemap URL for `https://blog.env.skin/sitemap.xml`.
+The robots file must allow normal crawling and reference the sitemap URL for `https://env.skin/sitemap.xml`.
 
 ### Google Analytics
 
