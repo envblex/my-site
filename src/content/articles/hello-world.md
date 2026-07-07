@@ -1,6 +1,6 @@
 ---
 title: "Hello, env.skin"
-description: "A first published note for the personal blog."
+description: "A first published note for the personal "
 slug: "hello-world"
 publishedAt: "2026-05-18"
 tags: ["astro", "publishing"]
