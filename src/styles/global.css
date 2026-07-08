@@ -202,6 +202,29 @@ p {
   background: transparent;
 }
 
+.apps-section {
+  padding: 8px 0;
+}
+
+.apps-list {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.apps-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.app-desc {
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .empty-state,
 .not-found {
   padding: 40px 0;

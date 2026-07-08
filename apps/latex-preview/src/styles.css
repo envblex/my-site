@@ -1,0 +1,289 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f5f5;
+  --surface: #ffffff;
+  --text: #202124;
+  --muted: #5f6368;
+  --line: #dadce0;
+  --accent: #1967d2;
+  --accent-soft: #e8f0fe;
+  --danger: #d93025;
+  --radius: 8px;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "JetBrains Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  color: var(--accent);
+}
+
+.app-shell {
+  width: min(100% - 24px, 800px);
+  margin: 0 auto;
+  padding: 16px 0 40px;
+}
+
+.app-header {
+  padding: 20px 0 16px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.app-subtitle {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-editor {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+  min-height: 80px;
+}
+
+.input-editor:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toolbar-spacer {
+  flex: 1;
+  min-width: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
+}
+
+.btn:hover {
+  background: var(--bg);
+  border-color: var(--muted);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: #1557b0;
+  border-color: #1557b0;
+}
+
+.btn-outline {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: var(--accent-soft);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+}
+
+.output-area {
+  margin-top: 16px;
+  padding: 24px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  min-width: 0;
+}
+
+.output {
+  min-height: 80px;
+  text-align: center;
+}
+
+.output .katex-display {
+  margin: 8px 0;
+  text-align: center;
+}
+
+.output .katex-display > .katex {
+  text-align: initial;
+}
+
+.output .katex .katex-html {
+  white-space: normal;
+}
+
+.output .katex .array {
+  border-collapse: collapse;
+}
+
+.output .katex .array td {
+  padding: 0 0.5em;
+  text-align: center;
+}
+
+.output .katex .array td:first-child {
+  padding-left: 0;
+}
+
+.output .katex .array td:last-child {
+  padding-right: 0;
+}
+
+@media (max-width: 600px) {
+  .output-area {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 13px;
+  font-family: var(--font-mono);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+.app-footer {
+  margin-top: 24px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.app-footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.app-footer a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    width: 100%;
+    padding: 12px 12px 32px;
+  }
+
+  .app-header {
+    padding: 12px 0;
+  }
+
+  .app-header h1 {
+    font-size: 20px;
+  }
+
+  .input-editor {
+    font-size: 16px;
+    min-height: 100px;
+  }
+
+  .toolbar {
+    gap: 6px;
+  }
+
+  .btn {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 15px;
+  }
+
+  .output-area {
+    padding: 16px 12px;
+    margin-top: 12px;
+  }
+
+  .output {
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 420px) {
+  .btn {
+    flex: 1;
+  }
+}
